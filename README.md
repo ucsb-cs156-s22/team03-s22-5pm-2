@@ -2,7 +2,7 @@
 
 [![codecov](https://codecov.io/gh/ucsb-cs156-s22/team03-s22-5pm-2/branch/main/graph/badge.svg?token=xxfPvCVkiM)](https://codecov.io/gh/ucsb-cs156-s22/team03-s22-5pm-2)
 
-* <https://s22-5pm-2-team02.herokuapp.com>
+* Production deployment: <https://s22-5pm-2-team02.herokuapp.com>
 
 * QA deployment: <https://s22-5pm-2-team02-qa.herokuapp.com>
 
