@@ -1,4 +1,4 @@
-public package edu.ucsb.cs156.example.controllers;
+package edu.ucsb.cs156.example.controllers;
 
 import edu.ucsb.cs156.example.repositories.UserRepository;
 import edu.ucsb.cs156.example.testconfig.TestConfig;
@@ -383,6 +383,3 @@ public class RecommendationControllerTests extends ControllerTestCase {
 }
 
 
- RecommendationControllerTests {
-    
-}
