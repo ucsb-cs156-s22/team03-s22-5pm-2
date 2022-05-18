@@ -23,7 +23,7 @@ Empty.args = {
 export const threeOrganization = Template.bind({});
 
 threeOrganization.args = {
-    dates: ucsbOrganizationFixtures.threeOrganization
+    organization: ucsbOrganizationFixtures.threeOrganization
 };
 
 
