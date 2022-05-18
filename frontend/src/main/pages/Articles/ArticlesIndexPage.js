@@ -22,8 +22,11 @@ export default function ArticlesIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         <h1>Articles</h1>
-        <ArticlesTable articles={articles} currentUser={currentUser} />
+        
       </div>
     </BasicLayout>
   )
 }
+
+
+// <ArticlesTable articles={articles} currentUser={currentUser} />
