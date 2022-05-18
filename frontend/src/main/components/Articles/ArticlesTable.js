@@ -36,18 +36,6 @@ export default function ArticlesTable({ Articles, _currentUser }) {
 
     const columns = [
         {
-            Header: 'Date Added',
-            accessor: 'dateAdded', 
-        },
-        {
-            Header: 'Email',
-            accessor: 'email',
-        },
-        {
-            Header: 'Explanation',
-            accessor: 'explanation', 
-        },
-        {
             Header: 'Id',
             accessor: 'id',
         },
@@ -58,6 +46,18 @@ export default function ArticlesTable({ Articles, _currentUser }) {
         {
             Header: 'Url',
             accessor: 'url',
+        },
+        {
+            Header: 'Explanation',
+            accessor: 'explanation', 
+        },
+        {
+            Header: 'Email',
+            accessor: 'email',
+        },
+        {
+            Header: 'Date Added',
+            accessor: 'dateAdded', 
         }
     ];
 
