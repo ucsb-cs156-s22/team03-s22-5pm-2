@@ -28,4 +28,4 @@ const ucsbOrganizationFixtues = {
 };
 
 
-export { ucsbDatesFixtures };
+export { ucsbOrganizationFixtues };
