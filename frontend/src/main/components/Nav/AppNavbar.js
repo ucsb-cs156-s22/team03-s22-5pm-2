@@ -55,6 +55,19 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+              {/*jo - Menu Item Review navbar code */}
+              {
+                hasRole(currentUser, "ROLE_USER") && (
+                  <NavDropdown title="Menu Item Review" id="appnavbar-review-dropdown" data-testid="appnavbar-review-dropdown" >
+                    <NavDropdown.Item as={Link} to="/review/list">List MenuItemReviews</NavDropdown.Item>
+                    {
+                      hasRole(currentUser, "ROLE_ADMIN") && (
+                      <NavDropdown.Item as={Link} to="/review/create">Create MenuItemReview</NavDropdown.Item>
+                      )
+                    }
+                  </NavDropdown>
+                )
+              }
                {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="UCSB Dining Commons" id="appnavbar-dining-commons-dropdown" data-testid="appnavbar-dining-commons-dropdown" >
