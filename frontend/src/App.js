@@ -17,7 +17,7 @@ import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
-import ArticlesCommonsIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 
 function App() {

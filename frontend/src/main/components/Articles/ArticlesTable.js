@@ -1,8 +1,8 @@
 import OurTable, { ButtonColumn} from "main/components/OurTable";
-import { useBackendMutation } from "main/utils/useBackend";
-import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import { _useBackendMutation } from "main/utils/useBackend";
+//import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
-import { hasRole } from "main/utils/currentUser";
+import { _hasRole } from "main/utils/currentUser";
 
 
 export function cellToAxiosParamsDelete(cell) {
@@ -32,7 +32,7 @@ export default function ArticlesTable({ Articles, currentUser }) {
     // Stryker enable all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
-    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    //const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
         {
@@ -64,11 +64,11 @@ export default function ArticlesTable({ Articles, currentUser }) {
 
     const testid = "ArticlesTable";
 
-    const columnsIfAdmin = [
-        ...columns,
+    //const _columnsIfAdmin = [
+    //    ...columns,
         // ButtonColumn("Edit", "primary", editCallback, testid),
         //ButtonColumn("Delete", "danger", deleteCallback, testid)
-    ];
+    //];
 
     //const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
