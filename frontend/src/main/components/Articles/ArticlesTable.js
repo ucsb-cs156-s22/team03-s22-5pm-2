@@ -1,4 +1,4 @@
-import OurTable, { ButtonColumn} from "main/components/OurTable";
+import OurTable, { _ButtonColumn} from "main/components/OurTable";
 import { _useBackendMutation } from "main/utils/useBackend";
 //import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function ArticlesTable({ Articles, currentUser }) {
+export default function ArticlesTable({ Articles, _currentUser }) {
 
     // const navigate = useNavigate();
 
