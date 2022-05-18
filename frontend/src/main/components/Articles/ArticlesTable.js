@@ -50,7 +50,6 @@ export default function ArticlesTable({ Articles, _currentUser }) {
         {
             Header: 'Id',
             accessor: 'id',
-
         },
         {
             Header: 'Title',
