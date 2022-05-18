@@ -2,14 +2,14 @@ import React from 'react'
 import { useBackend } from 'main/utils/useBackend'; // use prefix indicates a React Hook
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import ArticlesTable from 'main/components/Articles/ArticlesTable';
+//import ArticlesTable from 'main/components/Articles/ArticlesTable';
 import { useCurrentUser } from 'main/utils/currentUser' // use prefix indicates a React Hook
 
 export default function ArticlesIndexPage() {
 
-  const currentUser = useCurrentUser();
+  const _currentUser = useCurrentUser();
 
-  const { article: articles, error: _error, status: _status } =
+  const { article: _articles, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
       ["/api/articles/all"],
