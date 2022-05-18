@@ -8,6 +8,7 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import _mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
