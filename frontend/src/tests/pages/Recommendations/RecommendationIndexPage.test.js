@@ -1,7 +1,7 @@
 import { _fireEvent, render, _waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import RecommendationIndexPage from "main/pages/Recommendations/RecommendationIndexPage";
+import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
 
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
@@ -46,7 +46,7 @@ describe("RecommendationIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationIndexPage />
+                    <RecommendationsIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -62,7 +62,7 @@ describe("RecommendationIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <RecommendationIndexPage />
+                    <RecommendationsIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
