@@ -17,7 +17,7 @@ import UCSBDatesEditPage from "main/pages/UCSBDates/UCSBDatesEditPage";
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
-import ArticlesCommonsIndexPage from "main/pages/Articles/ArticlesCommonsIndexPage";
+import ArticlesCommonsIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
-              <Route exact path="/Articles/list" element={<ArticlesCommonsIndexPage />} />
+              <Route exact path="/Articles/list" element={<ArticlesIndexPage />} />
             </>
           )
         }
