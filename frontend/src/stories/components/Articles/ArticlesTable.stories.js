@@ -22,7 +22,7 @@ Empty.args = {
 
 export const ThreeArticles = Template.bind({});
 
-ThreeDates.args = {
+ThreeArticles.args = {
     articles: articlesFixtures.threeArticles
 };
 
