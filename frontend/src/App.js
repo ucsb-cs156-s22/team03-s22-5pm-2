@@ -67,10 +67,19 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/Articles/list" element={<ArticlesIndexPage />} />
-              <Route exact path="/Articles/create" element={<ArticlesIndexPage />} />
+
             </>
           )
         }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/Articles/create" element={<ArticlesIndexPage />} />
+              
+            </>
+          )
+        }
+                      
 
       </Routes>
     </BrowserRouter>
