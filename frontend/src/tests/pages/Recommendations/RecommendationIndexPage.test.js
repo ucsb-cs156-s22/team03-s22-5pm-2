@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { _fireEvent, render, _waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import RecommendationIndexPage from "main/pages/Recommendations/RecommendationIndexPage";
@@ -69,5 +69,5 @@ describe("RecommendationIndexPage tests", () => {
 
 
     });
-    
+
 });
