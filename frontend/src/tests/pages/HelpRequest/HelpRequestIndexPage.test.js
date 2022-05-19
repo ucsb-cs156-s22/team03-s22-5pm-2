@@ -61,7 +61,7 @@ describe("HelpRequestIndexPage tests", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/helprequest/all").reply(200, []);
-
+//comment
         
         render(
             <QueryClientProvider client={queryClient}>

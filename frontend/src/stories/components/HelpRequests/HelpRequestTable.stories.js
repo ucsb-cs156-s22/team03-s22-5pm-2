@@ -23,7 +23,7 @@ Empty.args = {
 export const ThreeRequests = Template.bind({});
 
 ThreeRequests.args = {
-    dates: helpRequestsFixtures.threeRequests
+    helprequests: helpRequestsFixtures.threeRequests
 };
 
 
