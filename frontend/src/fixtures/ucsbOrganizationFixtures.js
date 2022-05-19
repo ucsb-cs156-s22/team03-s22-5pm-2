@@ -1,11 +1,11 @@
 const ucsbOrganizationFixtures = {
-    oneDiningCommons: {
+    oneOrganization: {
         "orgCode": "ZPR",
         "orgTranlsationShort": "ZETA PHI RHO",
         "orgTranlsation": "ZETA PHI RHO",
         "hasTakeOutMeal": false
     },
-    threeCommons: [
+    threeOrganizations: [
         {
             "orgCode": "SKY",
             "orgTranlsationShort": "SKYDIVING CLUB",
