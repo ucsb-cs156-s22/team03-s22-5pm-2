@@ -235,8 +235,7 @@ describe("AppNavbar tests", () => {
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-dining-commons-list/)).toBeInTheDocument() );
 
-    });
-   
+    })
 });
 
 

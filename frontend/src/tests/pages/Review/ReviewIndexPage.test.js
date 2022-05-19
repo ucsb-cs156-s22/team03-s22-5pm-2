@@ -138,14 +138,14 @@ describe("ReviewIndexPage tests", () => {
     //     setupAdminUser();
 
     //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/ucsbdates/all").reply(200, ucsbDatesFixtures.threeDates);
-    //     axiosMock.onDelete("/api/ucsbdates").reply(200, "UCSBDate with id 1 was deleted");
+    //     axiosMock.onGet("/api/MenuItemReview/all").reply(200, reviewFixtures.threeReviews);
+    //     axiosMock.onDelete("/api/MenuItemReview", {params: {id: 1}}).reply(200, "Review with id 1 was deleted");
 
 
     //     const { getByTestId } = render(
     //         <QueryClientProvider client={queryClient}>
     //             <MemoryRouter>
-    //                 <UCSBDatesIndexPage />
+    //                 <ReviewIndexPage />
     //             </MemoryRouter>
     //         </QueryClientProvider>
     //     );
@@ -160,7 +160,7 @@ describe("ReviewIndexPage tests", () => {
        
     //     fireEvent.click(deleteButton);
 
-    //     await waitFor(() => { expect(mockToast).toBeCalledWith("UCSBDate with id 1 was deleted") });
+    //     await waitFor(() => { expect(mockToast).toBeCalledWith("Review with id 1 was deleted") });
 
     // });
 
