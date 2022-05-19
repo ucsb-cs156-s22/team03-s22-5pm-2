@@ -1,10 +1,10 @@
-import OurTable, { ButtonColumn } from "main/components/OurTable"; 
-import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/reviewUtils"
+import OurTable, { _ButtonColumn } from "main/components/OurTable"; 
+import { _useBackendMutation } from "main/utils/useBackend";
+import { _cellToAxiosParamsDelete, _onDeleteSuccess } from "main/utils/reviewUtils"
 // import { useNavigate } from "react-router-dom";
-import { hasRole } from "main/utils/currentUser";
+import { _hasRole } from "main/utils/currentUser";
 
-export default function ReviewTable({ reviews, currentUser }) {
+export default function ReviewTable({ reviews, _currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -56,11 +56,11 @@ export default function ReviewTable({ reviews, currentUser }) {
         }
     ];
 
-    const columnsIfAdmin = [
-        ...columns,
-        // ButtonColumn("Edit", "primary", editCallback, "ReviewTable"),
-        // ButtonColumn("Delete", "danger", deleteCallback, "ReviewTable")
-    ];
+    // const columnsIfAdmin = [
+    //     ...columns,
+    //     // ButtonColumn("Edit", "primary", editCallback, "ReviewTable"),
+    //     // ButtonColumn("Delete", "danger", deleteCallback, "ReviewTable")
+    // ];
 
     // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
     const columnsToDisplay = columns;
