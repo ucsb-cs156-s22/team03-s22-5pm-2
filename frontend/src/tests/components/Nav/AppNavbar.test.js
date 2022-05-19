@@ -259,7 +259,9 @@ describe("AppNavbar tests", () => {
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-dining-commons-list/)).toBeInTheDocument() );
 
+
     });
+
 
     test("renders the recommendations correctly for an admin", async () => {
 
