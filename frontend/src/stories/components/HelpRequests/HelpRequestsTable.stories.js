@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HelpRequestsTable from "main/components/HelpRequests/HelpRequestsTable";
-//import { helpRequestsFixtures } from 'fixtures/helpRequestsFixtures';
+import { helpRequestsFixtures } from 'fixtures/helpRequestsFixtures';
 
 export default {
     title: 'components/HelpRequests/HelpRequestsTable',
