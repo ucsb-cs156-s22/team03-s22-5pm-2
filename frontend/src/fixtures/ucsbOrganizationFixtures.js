@@ -1,28 +1,28 @@
 const ucsbOrganizationFixtures = {
     oneOrganization: {
         "orgCode": "ZPR",
-        "orgTranlsationShort": "ZETA PHI RHO",
-        "orgTranlsation": "ZETA PHI RHO",
-        "hasTakeOutMeal": false
+        "orgTranslationShort": "ZETA PHI RHO",
+        "orgTranslation": "ZETA PHI RHO",
+        "inactive": false
     },
     threeOrganizations: [
         {
             "orgCode": "SKY",
-            "orgTranlsationShort": "SKYDIVING CLUB",
-            "orgTranlsation": "SKYDIVING CLUB AT UCSB",
-            "hasTakeOutMeal": false
+            "orgTranslationShort": "SKYDIVING CLUB",
+            "orgTranslation": "SKYDIVING CLUB AT UCSB",
+            "inactive": false
         },
         {
             "orgCode": "OSLI",
-            "orgTranlsationShort": "STUDENT LIFE",
-            "orgTranlsation": "OFFICE OF STUDENT LIFE",
-            "hasTakeOutMeal": false
+            "orgTranslationShort": "STUDENT LIFE",
+            "orgTranslation": "OFFICE OF STUDENT LIFE",
+            "inactive": false
         },
         {
             "orgCode": "KRC",
-            "orgTranlsationShort": "KOREAN RADIO CL",
-            "orgTranlsation": "KOREAN RADIO CLUB",
-            "hasTakeOutMeal": false
+            "orgTranslationShort": "KOREAN RADIO CL",
+            "orgTranslation": "KOREAN RADIO CLUB",
+            "inactive": false
         } 
     ]
 };
