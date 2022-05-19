@@ -4,7 +4,7 @@ import OurTable from "main/components/OurTable";
 // import { useNavigate } from "react-router-dom";
 // import { hasRole } from "main/utils/currentUser";
 
-export default function RecommendationsTable({ recommendations, currentUser }) {
+export default function RecommendationsTable({ recommendations, _currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -62,6 +62,8 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
 
     // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
+    const columnsToDisplay = columns;
+    
     return <OurTable
         data={recommendations}
         columns={columnsToDisplay}
