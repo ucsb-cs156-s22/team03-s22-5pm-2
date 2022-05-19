@@ -74,7 +74,7 @@ describe("RecommendationIndexPage tests", () => {
 
     });
 
-    test("renders three diningCommon without crashing for regular user", async () => {
+    test("renders three recommendations without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
@@ -93,7 +93,7 @@ describe("RecommendationIndexPage tests", () => {
 
     });
 
-    test("renders three diningCommons without crashing for admin user", async () => {
+    test("renders three recommendations without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
@@ -135,6 +135,6 @@ describe("RecommendationIndexPage tests", () => {
           expect(header).toBeInTheDocument();
         });
 
-        expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
+        expect(queryByTestId(`${testId}-cell-row-0-col-requesterEmail`)).not.toBeInTheDocument();
     });
 });
