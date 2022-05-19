@@ -91,10 +91,9 @@ describe("ArticlesTable tests", () => {
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-    //UNCOMMENT WHEN ADDING DELETE BUTTON
-    //const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    //expect(deleteButton).toBeInTheDocument();
-    //expect(deleteButton).toHaveClass("btn-danger");
+    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    expect(deleteButton).toHaveClass("btn-danger");
 
   });
 
