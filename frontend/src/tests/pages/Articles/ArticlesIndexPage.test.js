@@ -143,7 +143,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
-        axiosMock.onDelete("/api/articles", {params: {title: "de-la-guerra"}}).reply(200, "Articles with id de-la-guerra was deleted");
+        axiosMock.onDelete("/api/articles", {params: {title: "title"}}).reply(200, "Articles with title title was deleted");
 
 
         const { getByTestId } = render(
@@ -156,7 +156,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
         await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toBeInTheDocument(); });
 
-       expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("de-la-guerra"); 
+       expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("title"); 
 
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
@@ -164,7 +164,7 @@ describe("UCSBDatesIndexPage tests", () => {
        
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Articles with id de-la-guerra was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Articles with title title was deleted") });
 
     });
 
