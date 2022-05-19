@@ -87,9 +87,9 @@ describe("RecommendationIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
-        expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("phtcon@ucsb.edu"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("richert@ucsb.edu");
+        expect(getByTestId(`${testId}-cell-row-2-col-professorEmail`)).toHaveTextContent("pon@ucsb.edu");
 
     });
 
@@ -106,9 +106,9 @@ describe("RecommendationIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
-        expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("phtcon@ucsb.edu"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("richert@ucsb.edu");
+        expect(getByTestId(`${testId}-cell-row-2-col-professorEmail`)).toHaveTextContent("pon@ucsb.edu");
 
     });
 
