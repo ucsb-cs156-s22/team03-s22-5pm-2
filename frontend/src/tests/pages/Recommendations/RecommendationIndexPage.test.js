@@ -1,4 +1,4 @@
-import { _fireEvent, render, _waitFor } from "@testing-library/react";
+import { _fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import RecommendationsIndexPage from "main/pages/Recommendations/RecommendationsIndexPage";
@@ -6,6 +6,7 @@ import RecommendationsIndexPage from "main/pages/Recommendations/Recommendations
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
@@ -71,4 +72,67 @@ describe("RecommendationIndexPage tests", () => {
 
     });
 
+    test("renders three diningCommon without crashing for regular user", async () => {
+        setupUserOnly();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
+        expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
+
+    });
+
+    test("renders three diningCommons without crashing for admin user", async () => {
+        setupAdminUser();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
+        expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
+
+    });
+
+    test("renders empty table when backend unavailable, user only", async () => {
+        setupUserOnly();
+
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/recommendations/all").timeout();
+
+        const { queryByTestId, getByText } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
+
+        const expectedHeaders = ['ID',  'Professor Email', 'Requester Email','Date Needed','Date Requested','Explanation','Done'];
+    
+        expectedHeaders.forEach((headerText) => {
+          const header = getByText(headerText);
+          expect(header).toBeInTheDocument();
+        });
+
+        expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
+    });
 });
