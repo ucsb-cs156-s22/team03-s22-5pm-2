@@ -62,6 +62,7 @@ describe("HelpRequestIndexPage tests", () => {
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/helprequest/all").reply(200, []);
 
+        
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
