@@ -18,7 +18,6 @@ import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
 
-
 function App() {
 
   const { data: currentUser } = useCurrentUser();
@@ -62,7 +61,6 @@ function App() {
             </>
           )
         }
-
       </Routes>
     </BrowserRouter>
   );
