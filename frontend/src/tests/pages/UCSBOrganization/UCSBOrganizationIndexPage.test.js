@@ -127,7 +127,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
-code
+
         const expectedHeaders = ['Org Code',  'Org Translation Short', 'Org Translation','Inactive'];
     
         expectedHeaders.forEach((headerText) => {
