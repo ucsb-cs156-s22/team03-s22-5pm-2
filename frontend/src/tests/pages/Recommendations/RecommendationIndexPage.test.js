@@ -91,38 +91,38 @@ describe("RecommendationIndexPage tests", () => {
 
     });
 
-    test("renders three diningCommons without crashing for admin user", async () => {
-        setupAdminUser();
-        const queryClient = new QueryClient();
-        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+    // test("renders three diningCommons without crashing for admin user", async () => {
+    //     setupAdminUser();
+    //     const queryClient = new QueryClient();
+    //     axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
 
-        const { getByTestId } = render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <RecommendationsIndexPage />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
+    //     const { getByTestId } = render(
+    //         <QueryClientProvider client={queryClient}>
+    //             <MemoryRouter>
+    //                 <RecommendationsIndexPage />
+    //             </MemoryRouter>
+    //         </QueryClientProvider>
+    //     );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
-        expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
+    //     await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu"); } );
+    //     expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
+    //     expect(getByTestId(`${testId}-cell-row-2-col-requesterEmail`)).toHaveTextContent("cgau@ucsb.edu");
 
-    });
+    // });
 
-    test("renders empty table when backend unavailable, user only", async () => {
-        setupUserOnly();
+    // test("renders empty table when backend unavailable, user only", async () => {
+    //     setupUserOnly();
 
-        const queryClient = new QueryClient();
-        axiosMock.onGet("/api/recommendations/all").timeout();
+    //     const queryClient = new QueryClient();
+    //     axiosMock.onGet("/api/recommendations/all").timeout();
 
-        const { queryByTestId, getByText } = render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <RecommendationsIndexPage />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
+    //     const { queryByTestId, getByText } = render(
+    //         <QueryClientProvider client={queryClient}>
+    //             <MemoryRouter>
+    //                 <RecommendationsIndexPage />
+    //             </MemoryRouter>
+    //         </QueryClientProvider>
+    //     );
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
