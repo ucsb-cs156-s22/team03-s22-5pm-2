@@ -1,6 +1,6 @@
-import OurTable, { _ButtonColumn} from "main/components/OurTable";
-import { _useBackendMutation } from "main/utils/useBackend";
-//import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import OurTable, { ButtonColumn} from "main/components/OurTable";
+import { useBackendMutation } from "main/utils/useBackend";
+import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { _hasRole } from "main/utils/currentUser";
 
@@ -15,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function ArticlesTable({ articles, _currentUser }) {
+export default function ArticlesTable({ articles, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -63,15 +63,15 @@ export default function ArticlesTable({ articles, _currentUser }) {
 
     const testid = "ArticlesTable";
 
-    //const _columnsIfAdmin = [
-    //    ...columns,
-        // ButtonColumn("Edit", "primary", editCallback, testid),
-        //ButtonColumn("Delete", "danger", deleteCallback, testid)
-    //];
+    const _columnsIfAdmin = [
+        ...columns,
+        //ButtonColumn("Edit", "primary", editCallback, testid),
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
+    ];
 
-    //const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
+    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
-    const columnsToDisplay = columns;
+    //const columnsToDisplay = columns;
 
     return <OurTable
         data={articles}
