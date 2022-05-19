@@ -128,7 +128,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
-        const expectedHeaders = ['Code',  'Name', 'Sack Meal?','Takeout Meal?','Dining Cam?','Latitude','Longitude'];
+        const expectedHeaders = ['Id',  'Title', 'Url','Explanation','Email','Date Added'];
     
         expectedHeaders.forEach((headerText) => {
           const header = getByText(headerText);
