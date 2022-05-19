@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("HelpReqeustsTable tests", () => {
+describe("HelpReqeustTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -23,7 +23,7 @@ describe("HelpReqeustsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("HelpReqeustsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,7 +48,7 @@ describe("HelpReqeustsTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
