@@ -1,7 +1,6 @@
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import TodosIndexPage from "main/pages/Todos/TodosIndexPage";
 import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
 
 import { apiCurrentUserFixtures }  from "fixtures/currentUserFixtures";
