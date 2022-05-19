@@ -63,7 +63,7 @@ export default function ArticlesTable({ articles, currentUser }) {
 
     const testid = "ArticlesTable";
 
-    const _columnsIfAdmin = [
+    const columnsIfAdmin = [
         ...columns,
         //ButtonColumn("Edit", "primary", editCallback, testid),
         ButtonColumn("Delete", "danger", deleteCallback, testid)
