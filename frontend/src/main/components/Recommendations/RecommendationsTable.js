@@ -2,7 +2,7 @@ import OurTable from "main/components/OurTable";
 // import { useBackendMutation } from "main/utils/useBackend";
 // import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
-import { hasRole } from "main/utils/currentUser";
+// import { hasRole } from "main/utils/currentUser";
 
 export default function RecommendationsTable({ recommendations, currentUser }) {
 
@@ -60,7 +60,7 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     //     ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable")
     // ];
 
-    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
+    // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
     return <OurTable
         data={recommendations}
