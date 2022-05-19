@@ -1,16 +1,15 @@
-//import { fireEvent, render, waitFor } from "@testing-library/react";
+import { /*fireEvent*/, render, /*_waitFor*/ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
+import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-//import { diningCommonsFixtures } from "fixtures/diningCommonsFixtures";
+//import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
-import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 
 
 const mockToast = jest.fn();
