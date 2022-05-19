@@ -1,13 +1,13 @@
 import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
+import {onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/helprequest",
+        url: "/api/HelpRequest",
         method: "DELETE",
         params: {
             id: cell.row.values.id
@@ -28,7 +28,7 @@ export default function HelpRequestTable({ helprequests, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/helprequest/all"]
+        ["/api/HelpRequest/all"]
     );
     
     // Stryker enable all 
@@ -52,7 +52,7 @@ export default function HelpRequestTable({ helprequests, currentUser }) {
         {
             Header: 'solved',
             id: 'solved',
-            accessor: (row, _rowIndex) => String(row.solved) // hack needed for boolean values to show up
+            accessor: (row, _rowIndex) => String(row.solved)
         },
         {
             Header: 'tableOrBreakoutRoom',
