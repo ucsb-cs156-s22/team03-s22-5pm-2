@@ -9,6 +9,9 @@ import TodosEditPage from "main/pages/Todos/TodosEditPage";
 
 import DiningCommonsIndexPage from "main/pages/DiningCommons/DiningCommonsIndexPage";
 
+import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
+
+
 import MenuItemsIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
 
 import UCSBDatesIndexPage from "main/pages/UCSBDates/UCSBDatesIndexPage";
@@ -80,6 +83,17 @@ function App() {
             </>
           )
         }
+        
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/helprequest/list" element={<HelpRequestIndexPage />} />
+            </>
+          )
+        }      
+        
+      
+        
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
