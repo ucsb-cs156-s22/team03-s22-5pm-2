@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from "@testing-library/react";
+import { /*fireEvent,*/ render, /*waitFor*/ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
@@ -6,7 +6,7 @@ import MenuItemIndexPage from "main/pages/MenuItem/MenuItemIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { menuItemFixtures } from "fixtures/menuItemFixtures";
+// import { menuItemFixtures } from "fixtures/menuItemFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
