@@ -26,7 +26,7 @@ describe("ReviewIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    const testId = "ReviewTable";
+    // const testId = "ReviewTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
