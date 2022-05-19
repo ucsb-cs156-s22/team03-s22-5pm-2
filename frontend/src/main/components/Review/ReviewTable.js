@@ -13,15 +13,15 @@ export default function ReviewTable({ reviews, currentUser }) {
     // }
 
     // Stryker disable all : hard to test for query caching
-    const deleteMutation = useBackendMutation(
-        cellToAxiosParamsDelete,
-        { onSuccess: onDeleteSuccess },
-        ["/api/MenuItemReview/all"]
-    );
-    // Stryker enable all 
+    // const deleteMutation = useBackendMutation(
+    //     cellToAxiosParamsDelete,
+    //     { onSuccess: onDeleteSuccess },
+    //     ["/api/MenuItemReview/all"]
+    // );
+    // // Stryker enable all 
 
-    // Stryker disable next-line all : TODO try to make a good test for this
-    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
+    // // Stryker disable next-line all : TODO try to make a good test for this
+    // const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     // "code": 1,
     // "comments": "this sucked",
@@ -59,11 +59,11 @@ export default function ReviewTable({ reviews, currentUser }) {
     const columnsIfAdmin = [
         ...columns,
         // ButtonColumn("Edit", "primary", editCallback, "ReviewTable"),
-        ButtonColumn("Delete", "danger", deleteCallback, "ReviewTable")
+        // ButtonColumn("Delete", "danger", deleteCallback, "ReviewTable")
     ];
 
-    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
-    // const columnsToDisplay = columns;
+    // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
+    const columnsToDisplay = columns;
 
     return <OurTable
         data={reviews}
