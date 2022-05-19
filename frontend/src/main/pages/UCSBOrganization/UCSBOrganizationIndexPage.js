@@ -7,7 +7,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
 export default function UCSBOrganizationIndexPage() {
 
-  const currentUser = useCurrentUser();
+  /*const currentUser = useCurrentUser();
 
   const { data: organization, error: _error, status: _status } =
     useBackend(
@@ -16,7 +16,7 @@ export default function UCSBOrganizationIndexPage() {
             // Stryker disable next-line StringLiteral,ObjectLiteral : since "GET" is default, "" is an equivalent mutation
             { method: "GET", url: "/api/ucsborganization/all" },
       []
-    );
+    );*/
 
   return (
     <BasicLayout>

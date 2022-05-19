@@ -1,4 +1,4 @@
-import { /*fireEvent*/, render, /*_waitFor*/ } from "@testing-library/react";
+import { /*fireEvent,*/ render, /*_waitFor*/ } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
