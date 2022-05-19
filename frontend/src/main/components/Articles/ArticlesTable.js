@@ -5,15 +5,15 @@ import { _useBackendMutation } from "main/utils/useBackend";
 import { _hasRole } from "main/utils/currentUser";
 
 
-export function cellToAxiosParamsDelete(cell) {
-    return {
-        url: "/api/articles",
-        method: "DELETE",
-        params: {
-            id: cell.row.values.id
-        }
-    }
-}
+// export function cellToAxiosParamsDelete(cell) {
+//     return {
+//         url: "/api/articles",
+//         method: "DELETE",
+//         params: {
+//             id: cell.row.values.id
+//         }
+//     }
+// }
 
 export default function ArticlesTable({ articles, _currentUser }) {
 
