@@ -15,7 +15,7 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
-export default function ArticlesTable({ Articles, _currentUser }) {
+export default function ArticlesTable({ articles, _currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -74,7 +74,7 @@ export default function ArticlesTable({ Articles, _currentUser }) {
     const columnsToDisplay = columns;
 
     return <OurTable
-        data={Articles}
+        data={articles}
         columns={columnsToDisplay}
         testid={testid}
     />;
