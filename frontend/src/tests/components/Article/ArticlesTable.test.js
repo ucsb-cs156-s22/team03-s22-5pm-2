@@ -82,8 +82,8 @@ describe("ArticlesTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent(2);
-    expect(getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent(3);
+    expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("url");
+    expect(getByTestId(`${testId}-cell-row-2-col-url`)).toHaveTextContent("url3");
     expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title");
     expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title3");
 
