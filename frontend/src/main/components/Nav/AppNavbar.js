@@ -92,11 +92,6 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="Recommendations" id="appnavbar-recommendations-dropdown" data-testid="appnavbar-recommendations-dropdown" >
                     <NavDropdown.Item as={Link} to="/recommendations/list" data-testid="appnavbar-recommendations-list">List Recommendations</NavDropdown.Item>
-                    {
-                      hasRole(currentUser, "ROLE_ADMIN") && (
-                        <NavDropdown.Item as={Link} to="/recommendations/create" data-testid="appnavbar-recommendations-create">Create Recommendation</NavDropdown.Item>
-                      )
-                    }
                   </NavDropdown>
                 )
               }
@@ -104,11 +99,6 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="Review" id="appnavbar-review-dropdown" data-testid="appnavbar-review-dropdown" >
                     <NavDropdown.Item as={Link} to="/review/list" data-testid="appnavbar-review-list">List Reviews</NavDropdown.Item>
-                    {
-                      hasRole(currentUser, "ROLE_ADMIN") && (
-                      <NavDropdown.Item as={Link} to="/review/create" data-testid="appnavbar-review-create">Create Review</NavDropdown.Item>
-                      )
-                    }
                   </NavDropdown>
                 )
               }
