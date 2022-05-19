@@ -1,4 +1,4 @@
-import { _fireEvent, render, _waitFor } from "@testing-library/react";
+import { fireEvent, render, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
@@ -6,10 +6,10 @@ import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { _reviewFixtures } from "fixtures/reviewFixtures";
+import { reviewFixtures } from "fixtures/reviewFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-import _mockConsole from "jest-mock-console";
+import mockConsole from "jest-mock-console";
 
 
 const mockToast = jest.fn();
@@ -26,7 +26,7 @@ describe("ReviewIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    // const testId = "ReviewTable";
+    const testId = "ReviewTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
