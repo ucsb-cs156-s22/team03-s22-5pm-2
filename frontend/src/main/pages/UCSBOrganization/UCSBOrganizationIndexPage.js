@@ -22,7 +22,7 @@ export default function UCSBOrganizationIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         <h1>UCSB Organization</h1>
-        <p>This is where the index page will go</p>
+        <UCSBOrganizationTable organization={organization} currentUser={currentUser} />
       </div>
     </BasicLayout>
   )
