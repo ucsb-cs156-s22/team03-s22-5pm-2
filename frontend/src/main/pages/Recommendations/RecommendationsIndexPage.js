@@ -9,12 +9,12 @@ export default function RecommendationsIndexPage() {
 
   const currentUser = useCurrentUser();
 
-  const { data: dates, error: _error, status: _status } =
+  const { data: recommendations, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      ["/api/recommendations/all"],
+      ["/api/Recommendations/all"],
             // Stryker disable next-line StringLiteral,ObjectLiteral : since "GET" is default, "" is an equivalent mutation
-            { method: "GET", url: "/api/recommendations/all" },
+            { method: "GET", url: "/api/Recommendations/all" },
       []
     );
 
@@ -22,7 +22,7 @@ export default function RecommendationsIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         <h1>Recommendations</h1>
-        <RecommendationsTable dates={dates} currentUser={currentUser} />
+        <RecommendationsTable recommendations={recommendations} currentUser={currentUser} />
       </div>
     </BasicLayout>
   )
