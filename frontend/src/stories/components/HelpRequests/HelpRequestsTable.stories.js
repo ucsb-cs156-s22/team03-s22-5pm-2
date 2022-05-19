@@ -1,11 +1,11 @@
 import React from 'react';
 
 import HelpRequestsTable from "main/components/HelpRequests/HelpRequestsTable";
-import { helpRequestsFixtures } from 'fixtures/helpRequestsFixtures';
+import { helpRequestFixtures } from 'fixtures/helpRequestFixtures';
 
 export default {
-    title: 'components/HelpRequests/HelpRequestsTable',
-    component: HelpRequestsTable
+    title: 'components/HelpRequest/HelpRequestsTable',
+    component: HelpRequestTable
 };
 
 const Template = (args) => {
