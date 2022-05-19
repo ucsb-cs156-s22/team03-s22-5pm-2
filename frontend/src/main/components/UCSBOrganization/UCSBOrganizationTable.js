@@ -1,4 +1,4 @@
-import OurTable, { ButtonColumn} from "main/components/OurTable";
+/*import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
 import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
@@ -70,4 +70,4 @@ export default function UCSBOrganizationTable({ organization, currentUser }) {
         columns={columnsToDisplay}
         testid={testid}
     />;
-};
+};*/
