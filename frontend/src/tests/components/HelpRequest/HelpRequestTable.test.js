@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("HelpRequestTable tests", () => {
+describe("HelpReqeustsTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -23,7 +23,7 @@ describe("HelpRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("HelpRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,7 +48,7 @@ describe("HelpRequestTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <HelpRequestTable helprequests={[]} currentUser={currentUser} />
+          <HelpRequestsTable helprequests={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -67,18 +67,9 @@ describe("HelpRequestTable tests", () => {
       </QueryClientProvider>
 
     );
-    // {
-    //     "explanation": "string",
-    //     "id": 0,
-    //     "requestTime": "2022-05-18T23:18:21.837Z",
-    //     "requesterEmail": "string",
-    //     "solved": true,
-    //     "tableOrBreakoutRoom": "string",
-    //     "teamId": "string"
-    //   }
 
-    const expectedHeaders = ["explanation", "id", "requestTime", "requesterEmail", "solved", "tableOrBreakoutRoom", "teamId"];
-    const expectedFields = ["explanation", "id", "requestTime", "requesterEmail", "solved", "tableOrBreakoutRoom", "teamId"];
+    const expectedHeaders = ["explanation","id", "requestTime","solved", "tableOrBreakoutRoom", "teamId"];
+    const expectedFields = ["explanation","id", "requestTime","solved", "tableOrBreakoutRoom", "teamId"];
     const testId = "HelpRequestTable";
 
     expectedHeaders.forEach((headerText) => {
@@ -91,41 +82,41 @@ describe("HelpRequestTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("blah1");
-    expect(getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("blah2");
-
-    // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-    // expect(editButton).toBeInTheDocument();
-    // expect(editButton).toHaveClass("btn-primary");
-
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
+    /*
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
+    expect(editButton).toHaveClass("btn-primary");
+    */
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
 
   });
+  /*
+  test("Edit button navigates to the edit page for admin user", async () => {
 
-  // test("Edit button navigates to the edit page for admin user", async () => {
+    const currentUser = currentUserFixtures.adminUser;
 
-  //   const currentUser = currentUserFixtures.adminUser;
+    const { getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <HelpRequestsTable helpRequests={helpRequestsFixtures.threeHelpRequests} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-  //   const { getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <UCSBDatesTable dates={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
+    );
 
-  //   );
+    await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
 
-  //   await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    expect(editButton).toBeInTheDocument();
+    
+    fireEvent.click(editButton);
 
-  //   const editButton = getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
-  //   expect(editButton).toBeInTheDocument();
+    await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
 
-  //   fireEvent.click(editButton);
-
-  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
-
-  // });
-
-}); 
+  });
+  */
+});

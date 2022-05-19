@@ -1,8 +1,9 @@
-import OurTable from "main/components/OurTable";
-//import { useBackendMutation } from "main/utils/useBackend";
-//import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/UCSBDateUtils"
-//import { useNavigate } from "react-router-dom";
-//import { hasRole } from "main/utils/currentUser";
+import OurTable, { ButtonColumn} from "main/components/OurTable";
+import { useBackendMutation } from "main/utils/useBackend";
+import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
+// import { useNavigate } from "react-router-dom";
+import { hasRole } from "main/utils/currentUser";
+
 
 export function cellToAxiosParamsDelete(cell) {
     return {
@@ -14,82 +15,67 @@ export function cellToAxiosParamsDelete(cell) {
     }
 }
 
+export default function HelpRequestTable({ helprequests, currentUser }) {
 
+    // const navigate = useNavigate();
 
-export default function HelpRequestTable({ helprequests, _currentUser }) {
-
-   // const navigate = useNavigate();
-
-   
     // const editCallback = (cell) => {
     //     navigate(`/ucsbdates/edit/${cell.row.values.id}`)
     // }
 
     // Stryker disable all : hard to test for query caching
-    // const deleteMutation = useBackendMutation(
-    //     cellToAxiosParamsDelete,
-    //     { onSuccess: onDeleteSuccess },
-    //     ["/api/ucsbdates/all"]
-    // );
+    
+    const deleteMutation = useBackendMutation(
+        cellToAxiosParamsDelete,
+        { onSuccess: onDeleteSuccess },
+        ["/api/helprequest/all"]
+    );
+    
     // Stryker enable all 
 
     // Stryker disable next-line all : TODO try to make a good test for this
-    //const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
-
-
-    // {
-    //     "explanation": "string",
-    //     "id": 0,
-    //     "requestTime": "2022-05-18T23:18:21.837Z",
-    //     "requesterEmail": "string",
-    //     "solved": true,
-    //     "tableOrBreakoutRoom": "string",
-    //     "teamId": "string"
-    //   }
-
+    const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
 
     const columns = [
         {
             Header: 'explanation',
-            accessor: 'explanation', // accessor is the "key" in the data
+            accessor: 'explanation'
         },
         {
             Header: 'id',
-            accessor: 'id',
+            accessor: 'id'
         },
         {
             Header: 'requestTime',
-            accessor: 'requestTime',
-        },
-        {
-            Header: 'requesterEmail',
-            accessor: 'requesterEmail',
+            accessor: 'requestTime'
         },
         {
             Header: 'solved',
-            accessor: 'solved',
+            id: 'solved',
+            accessor: (row, _rowIndex) => String(row.solved) // hack needed for boolean values to show up
         },
         {
             Header: 'tableOrBreakoutRoom',
-            accessor: 'tableOrBreakoutRoom',
+            accessor: 'tableOrBreakoutRoom'
         },
         {
             Header: 'teamId',
-            accessor: 'teamId',
-        }
+            accessor: 'teamId'
+        },
     ];
 
-    // const columnsIfAdmin = [
-    //     ...columns,
-    //     ButtonColumn("Edit", "primary", editCallback, "UCSBDatesTable"),
-    //     ButtonColumn("Delete", "danger", deleteCallback, "UCSBDatesTable")
-    // ];
+    const testid = "HelpRequestTable";
 
-   // const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
-   const columnsToDisplay = columns
+    const columnsIfAdmin = [
+        ...columns,
+        ButtonColumn("Delete", "danger", deleteCallback, testid)
+    ];
+
+    const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
+
     return <OurTable
         data={helprequests}
         columns={columnsToDisplay}
-        testid={"HelpRequestTable"}
+        testid={testid}
     />;
 };
