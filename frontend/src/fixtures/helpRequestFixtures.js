@@ -8,9 +8,9 @@ const helpRequestFixtures = {
         "tableOrBreakoutRoom": "string",
         "teamId": "string"
       },
-    threRequests: [
+    threeRequests: [
         {
-            "explanation": "blah12",
+            "explanation": "blah1",
             "id": 0,
             "requestTime": "2022-05-18T23:18:21.837Z",
             "requesterEmail": "string",
