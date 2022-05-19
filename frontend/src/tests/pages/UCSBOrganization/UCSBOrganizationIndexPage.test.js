@@ -1,4 +1,4 @@
-import { /*fireEvent,*/ render, /*_waitFor*/ } from "@testing-library/react";
+import { fireEvent, render, _waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
@@ -6,7 +6,7 @@ import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizat
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-//import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
@@ -26,7 +26,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
-    //const testId = "DiningCommonsTable";
+    const testId = "DiningCommonsTable";
 
     const setupUserOnly = () => {
         axiosMock.reset();
@@ -74,7 +74,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
     });
 
-    /*test("renders three diningCommon without crashing for regular user", async () => {
+    test("renders three diningCommon without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/ucsbdiningcommons/all").reply(200, diningCommonsFixtures.threeCommons);
@@ -166,7 +166,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("DiningCommons with id de-la-guerra was deleted") });
 
-    });*/
+    });
 
 });
 
