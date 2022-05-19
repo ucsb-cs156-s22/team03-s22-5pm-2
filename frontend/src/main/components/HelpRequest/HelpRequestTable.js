@@ -4,6 +4,18 @@ import OurTable from "main/components/OurTable";
 //import { useNavigate } from "react-router-dom";
 //import { hasRole } from "main/utils/currentUser";
 
+export function cellToAxiosParamsDelete(cell) {
+    return {
+        url: "/api/helprequest",
+        method: "DELETE",
+        params: {
+            explanation: cell.row.values.explanation
+        }
+    }
+}
+
+
+
 export default function HelpRequestTable({ helprequests, _currentUser }) {
 
    // const navigate = useNavigate();
