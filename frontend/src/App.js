@@ -22,6 +22,8 @@ import RecommendationsIndexPage from "main/pages/Recommendations/Recommendations
 import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import ReviewIndexPage from "main/pages/Review/ReviewIndexPage";
 
+import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+
 import { hasRole, useCurrentUser } from "main/utils/currentUser";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -98,6 +100,15 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/ucsborganization/list" element={<UCSBOrganizationIndexPage />} />
+            </>
+          )
+        }
+        
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/Articles/list" element={<ArticlesIndexPage />} />
+
             </>
           )
         }
