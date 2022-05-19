@@ -1,5 +1,5 @@
 import {  render } from "@testing-library/react";
-import { recommendationsFixtures } from "fixtures/recommendationsFixtures";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import RecommendationsTable from "main/components/Recommendations/RecommendationsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -55,48 +55,48 @@ describe("RecommendationsTable tests", () => {
     );
   });
 
-//   test("Has the expected column headers and content for adminUser", () => {
+  test("Has the expected column headers and content for adminUser", () => {
 
-//     const currentUser = currentUserFixtures.adminUser;
+    const currentUser = currentUserFixtures.adminUser;
 
-//     const { getByText, getByTestId } = render(
-//       <QueryClientProvider client={queryClient}>
-//         <MemoryRouter>
-//           <RecommendationsTable recommendations={recommendationsFixtures.threeRecommendations} currentUser={currentUser} />
-//         </MemoryRouter>
-//       </QueryClientProvider>
+    const { getByText, getByTestId } = render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationsTable recommendations={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
 
-//     );
+    );
 
 
-//     // const expectedHeaders = ['Code',  'Name', 'Sack Meal?','Takeout Meal?','Dining Cam?','Latitude','Longitude'];
-//     // const expectedFields = ['code', 'name','hasSackMeal', 'hasTakeOutMeal','hasDiningCam','latitude','longitude'];
-//     // const testId = "RecommendationsTable";
+    const expectedHeaders = ['ID',  'Professor Email', 'Requester Email','Date Needed','Date Requested','Explanation','Done'];
+    const expectedFields = ['id', 'professorEmail','requesterEmail', 'dateNeeded','dateRequested','explanation','done'];
+    const testId = "RecommendationsTable";
 
-//     // expectedHeaders.forEach((headerText) => {
-//     //   const header = getByText(headerText);
-//     //   expect(header).toBeInTheDocument();
-//     // });
+    expectedHeaders.forEach((headerText) => {
+      const header = getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
 
-//     // expectedFields.forEach((field) => {
-//     //   const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
-//     //   expect(header).toBeInTheDocument();
-//     // });
+    expectedFields.forEach((field) => {
+      const header = getByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).toBeInTheDocument();
+    });
 
-//     // expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra");
-//     // expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("ortega");
-//     // expect(getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("De La Guerra");
-//     // expect(getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("Ortega");
+    expect(getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("phtcon@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("richert@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
 
-//     // // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
-//     // // expect(editButton).toBeInTheDocument();
-//     // // expect(editButton).toHaveClass("btn-primary");
+    // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
+    // expect(editButton).toBeInTheDocument();
+    // expect(editButton).toHaveClass("btn-primary");
 
-//     // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-//     // expect(deleteButton).toBeInTheDocument();
-//     // expect(deleteButton).toHaveClass("btn-danger");
+    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    // expect(deleteButton).toBeInTheDocument();
+    // expect(deleteButton).toHaveClass("btn-danger");
 
-//   });
+  });
 
   // test("Edit button navigates to the edit page for admin user", async () => {
 
