@@ -77,7 +77,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("renders three ucsbOrganizations without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrgnizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -96,7 +96,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
     test("renders three ucsbOrganizations without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrgnizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -142,7 +142,7 @@ describe("UCSBOrganizationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrgnizations);
+        axiosMock.onGet("/api/ucsborganization/all").reply(200, ucsbOrganizationFixtures.threeOrganizations);
         axiosMock.onDelete("/api/ucsborganization", {params: {orgCode: "SKY"}}).reply(200, "UCSBOrganization with id SKY was deleted");
 
 
