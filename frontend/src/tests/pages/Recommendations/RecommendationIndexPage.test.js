@@ -115,7 +115,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/recommendations/all").timeout();
+        axiosMock.onGet("/api/Recommendations/all").timeout();
 
         const { queryByTestId, getByText } = render(
             <QueryClientProvider client={queryClient}>
@@ -141,8 +141,8 @@ describe("RecommendationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
-        axiosMock.onDelete("/api/recommendations", {params: {id:2}}).reply(200, "Recommendations with id 2 was deleted");
+        axiosMock.onGet("/api/Recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onDelete("/api/Recommendations", {params: {id:2}}).reply(200, "Recommendations with id 2 was deleted");
 
 
         const { getByTestId } = render(
