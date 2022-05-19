@@ -6,7 +6,7 @@ import RecommendationsIndexPage from "main/pages/Recommendations/Recommendations
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import { _recommendationFixtures } from "fixtures/recommendationFixtures";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 import _mockConsole from "jest-mock-console";
