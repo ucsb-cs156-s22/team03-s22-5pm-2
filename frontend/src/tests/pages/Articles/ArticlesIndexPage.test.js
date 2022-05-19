@@ -87,9 +87,9 @@ describe("UCSBDatesIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra"); } );
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("ortega");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("portola");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("title"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
+        expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
 
     });
 
@@ -106,9 +106,9 @@ describe("UCSBDatesIndexPage tests", () => {
             </QueryClientProvider>
         );
 
-        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra"); });
-        expect(getByTestId(`${testId}-cell-row-1-col-code`)).toHaveTextContent("ortega");
-        expect(getByTestId(`${testId}-cell-row-2-col-code`)).toHaveTextContent("portola");
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("title"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
+        expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
 
     });
 
@@ -135,7 +135,7 @@ describe("UCSBDatesIndexPage tests", () => {
           expect(header).toBeInTheDocument();
         });
 
-        expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
+        expect(queryByTestId(`${testId}-cell-row-0-col-title`)).not.toBeInTheDocument();
     });
 
     //Implement when added delete button
@@ -144,7 +144,7 @@ describe("UCSBDatesIndexPage tests", () => {
 
     //     const queryClient = new QueryClient();
     //     axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
-    //     axiosMock.onDelete("/api/articles", {params: {code: "de-la-guerra"}}).reply(200, "Articles with id de-la-guerra was deleted");
+    //     axiosMock.onDelete("/api/articles", {params: {title: "de-la-guerra"}}).reply(200, "Articles with id de-la-guerra was deleted");
 
 
     //     const { getByTestId } = render(
@@ -155,9 +155,9 @@ describe("UCSBDatesIndexPage tests", () => {
     //         </QueryClientProvider>
     //     );
 
-    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-code`)).toBeInTheDocument(); });
+    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toBeInTheDocument(); });
 
-    //    expect(getByTestId(`${testId}-cell-row-0-col-code`)).toHaveTextContent("de-la-guerra"); 
+    //    expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("de-la-guerra"); 
 
 
     //     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
