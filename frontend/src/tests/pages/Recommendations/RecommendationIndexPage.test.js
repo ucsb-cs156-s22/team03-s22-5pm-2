@@ -135,4 +135,3 @@ describe("RecommendationIndexPage tests", () => {
 
         expect(queryByTestId(`${testId}-cell-row-0-col-code`)).not.toBeInTheDocument();
     });
-});
