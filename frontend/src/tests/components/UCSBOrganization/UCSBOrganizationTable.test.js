@@ -1,5 +1,5 @@
 import {  render } from "@testing-library/react";
-import { ucsbOrganizationFixtures, ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
+import { ucsbOrganizationFixtures } from "fixtures/ucsbOrganizationFixtures";
 import UCSBOrganizationTable from "main/components/UCSBOrganization/UCSBOrganizationTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -62,7 +62,7 @@ describe("UCSBOrganizationTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <UCSBOrganizationTable organization={}={ucsbOrganizationFixtures.threeOrganizations} currentUser={currentUser} />
+          <UCSBOrganizationTable organization={ucsbOrganizationFixtures.threeOrganizations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
