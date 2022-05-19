@@ -41,7 +41,7 @@ describe("AppNavbar tests", () => {
 
         await waitFor(() => expect(getByText("Welcome, phtcon@ucsb.edu")).toBeInTheDocument());
         const adminMenu = getByTestId("appnavbar-admin-dropdown");
-        expect(adminMenu).toBeInTheDocument();        
+        expect(adminMenu).toBeInTheDocument();
     });
 
     test("renders H2Console and Swagger links correctly", async () => {
@@ -61,7 +61,7 @@ describe("AppNavbar tests", () => {
 
         await waitFor(() => expect(getByText("H2Console")).toBeInTheDocument());
         const swaggerMenu = getByText("Swagger");
-        expect(swaggerMenu).toBeInTheDocument();        
+        expect(swaggerMenu).toBeInTheDocument();
     });
 
 
@@ -213,6 +213,30 @@ describe("AppNavbar tests", () => {
 
     });
 
+    test("renders the menuitem menu correctly for an admin", async () => {
+
+        const currentUser = currentUserFixtures.adminUser;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-menu-item-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-menu-item-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId(/appnavbar-menu-item-list/)).toBeInTheDocument() );
+
+    });
+
     test("renders the diningcommons menu correctly for an admin", async () => {
 
         const currentUser = currentUserFixtures.adminUser;
@@ -235,8 +259,130 @@ describe("AppNavbar tests", () => {
         aElement?.click();
         await waitFor( () => expect(getByTestId(/appnavbar-dining-commons-list/)).toBeInTheDocument() );
 
+
     });
-   
+
+
+    test("renders the recommendations correctly for an admin", async () => {
+
+        const currentUser = currentUserFixtures.adminUser;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-recommendations-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-recommendations-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId(/appnavbar-recommendations-list/)).toBeInTheDocument() );
+
+    });
+
+
+
+
+    test("renders the ucsborganization menu correctly for an admin", async () => {
+
+        const currentUser = currentUserFixtures.adminUser;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-ucsborganization-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-ucsborganization-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId(/appnavbar-ucsborganization-list/)).toBeInTheDocument() );
+
+    });
+
+
+    test("renders the review menu correctly for an admin", async () => {
+
+        const currentUser = currentUserFixtures.adminUser;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+        await waitFor(() => expect(getByTestId("appnavbar-review-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-review-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId(/appnavbar-review-list/)).toBeInTheDocument() );
+    });
+
+    test("renders the Articles menu correctly for a user", async () => {
+
+        const currentUser = currentUserFixtures.userOnly;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-article-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-article-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId("appnavbar-article-list")).toBeInTheDocument() );
+
+    });
+
+    test("renders the help request menu correctly for a user", async () => {
+
+        const currentUser = currentUserFixtures.userOnly;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        const {getByTestId  } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => expect(getByTestId("appnavbar-helprequest-dropdown")).toBeInTheDocument());
+        const dropdown = getByTestId("appnavbar-helprequest-dropdown");
+        const aElement = dropdown.querySelector("a");
+        expect(aElement).toBeInTheDocument();
+        aElement?.click();
+        await waitFor( () => expect(getByTestId("appnavbar-helprequest-list")).toBeInTheDocument() );
+
+    });
+
 });
-
-
