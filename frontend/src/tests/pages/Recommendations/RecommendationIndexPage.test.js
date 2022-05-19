@@ -74,43 +74,43 @@ describe("RecommendationIndexPage tests", () => {
 
     });
 
-    // test("renders three recommendations without crashing for regular user", async () => {
-    //     setupUserOnly();
-    //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+    test("renders three recommendations without crashing for regular user", async () => {
+        setupUserOnly();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
 
-    //     const { getByTestId } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <RecommendationsIndexPage />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
 
-    //     await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("BS/MS program"); } );
-    //     expect(getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("PhD CS Stanford");
-    //     expect(getByTestId(`${testId}-cell-row-2-col-explanation`)).toHaveTextContent("BS/MS program");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("BS/MS program"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("PhD CS Stanford");
+        expect(getByTestId(`${testId}-cell-row-2-col-explanation`)).toHaveTextContent("BS/MS program");
 
-    // });
+    });
 
-    // test("renders three recommendations without crashing for admin user", async () => {
-    //     setupAdminUser();
-    //     const queryClient = new QueryClient();
-    //     axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+    test("renders three recommendations without crashing for admin user", async () => {
+        setupAdminUser();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
 
-    //     const { getByTestId } = render(
-    //         <QueryClientProvider client={queryClient}>
-    //             <MemoryRouter>
-    //                 <RecommendationsIndexPage />
-    //             </MemoryRouter>
-    //         </QueryClientProvider>
-    //     );
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <RecommendationsIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
 
-    //     await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("BS/MS program"); } );
-    //     expect(getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("PhD CS Stanford");
-    //     expect(getByTestId(`${testId}-cell-row-2-col-explanation`)).toHaveTextContent("BS/MS program");
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-explanation`)).toHaveTextContent("BS/MS program"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-explanation`)).toHaveTextContent("PhD CS Stanford");
+        expect(getByTestId(`${testId}-cell-row-2-col-explanation`)).toHaveTextContent("BS/MS program");
 
-    // });
+    });
 
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
