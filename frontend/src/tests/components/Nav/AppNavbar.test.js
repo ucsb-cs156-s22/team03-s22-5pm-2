@@ -337,6 +337,8 @@ describe("AppNavbar tests", () => {
         await waitFor( () => expect(getByTestId(/appnavbar-review-list/)).toBeInTheDocument() );
     });
 
+
+
     test("renders the Articles menu correctly for a user", async () => {
 
         const currentUser = currentUserFixtures.userOnly;
@@ -384,5 +386,6 @@ describe("AppNavbar tests", () => {
         await waitFor( () => expect(getByTestId("appnavbar-helprequest-list")).toBeInTheDocument() );
 
     });
+
 
 });
