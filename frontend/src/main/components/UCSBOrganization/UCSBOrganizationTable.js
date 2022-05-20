@@ -1,21 +1,21 @@
 import OurTable, { ButtonColumn} from "main/components/OurTable";
 import { useBackendMutation } from "main/utils/useBackend";
-import {  onDeleteSuccess } from "main/utils/ArticlesUtils"
+import {  onDeleteSuccess } from "main/utils/UCSBDateUtils"
 // import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/articles",
+        url: "/api/ucsborganization",
         method: "DELETE",
         params: {
-            id: cell.row.values.id
+            orgCode: cell.row.values.orgCode
         }
     }
 }
 
-export default function ArticlesTable({ articles, currentUser }) {
+export default function UCSBOrganizationTable({ organization, currentUser }) {
 
     // const navigate = useNavigate();
 
@@ -24,11 +24,10 @@ export default function ArticlesTable({ articles, currentUser }) {
     // }
 
     // Stryker disable all : hard to test for query caching
-
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/articles/all"]
+        ["/api/ucsborganization/all"]
     );
     // Stryker enable all 
 
@@ -37,47 +36,38 @@ export default function ArticlesTable({ articles, currentUser }) {
 
     const columns = [
         {
-            Header: 'Id',
-            accessor: 'id',
+            Header: 'Org Code',
+            accessor: 'orgCode', 
         },
         {
-            Header: 'Title',
-            accessor: 'title'
+            Header: 'Org Translation Short',
+            accessor: 'orgTranslationShort',
         },
         {
-            Header: 'Url',
-            accessor: 'url',
+            Header: 'Org Translation',
+            accessor: 'orgTranslation',
         },
         {
-            Header: 'Explanation',
-            accessor: 'explanation', 
-        },
-        {
-            Header: 'Email',
-            accessor: 'email',
-        },
-        {
-            Header: 'Date Added',
-            accessor: 'dateAdded', 
+            Header: 'Inactive',
+            id: 'inactive', // needed for tests
+            accessor: (row, _rowIndex) => String(row.inactive) // hack needed for boolean values to show up
+
         }
     ];
 
-    const testid = "ArticlesTable";
+    const testid = "UCSBOrganizationTable";
 
     const columnsIfAdmin = [
         ...columns,
-        //ButtonColumn("Edit", "primary", editCallback, testid),
+        // ButtonColumn("Edit", "primary", editCallback, testid),
         ButtonColumn("Delete", "danger", deleteCallback, testid)
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
 
-    //const columnsToDisplay = columns;
-
     return <OurTable
-        data={articles}
+        data={organization}
         columns={columnsToDisplay}
         testid={testid}
     />;
-
 };

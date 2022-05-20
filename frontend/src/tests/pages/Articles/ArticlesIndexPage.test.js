@@ -166,7 +166,119 @@ describe("UCSBDatesIndexPage tests", () => {
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("Articles with id 2 was deleted") });
 
+
     });
+
+    test("renders without crashing for admin user", () => {
+        setupAdminUser();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/articles/all").reply(200, []);
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticlesIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+
+    });
+
+    test("renders three Articles without crashing for regular user", async () => {
+        setupUserOnly();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticlesIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(  () => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("title"); } );
+        expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
+        expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
+
+    });
+
+    test("renders three articles without crashing for admin user", async () => {
+        setupAdminUser();
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
+
+        const { getByTestId } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticlesIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("title"); });
+        expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
+        expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
+
+    });
+
+    test("renders empty table when backend unavailable, user only", async () => {
+        setupUserOnly();
+
+        const queryClient = new QueryClient();
+        axiosMock.onGet("/api/articles/all").timeout();
+
+        const { queryByTestId, getByText } = render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <ArticlesIndexPage />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
+
+        const expectedHeaders = ['Id',  'Title', 'Url','Explanation','Email','Date Added'];
+    
+        expectedHeaders.forEach((headerText) => {
+          const header = getByText(headerText);
+          expect(header).toBeInTheDocument();
+        });
+
+        expect(queryByTestId(`${testId}-cell-row-0-col-title`)).not.toBeInTheDocument();
+    });
+
+    //Implement when added delete button
+    // test("test what happens when you click delete, admin", async () => {
+    //     setupAdminUser();
+
+    //     const queryClient = new QueryClient();
+    //     axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
+    //     axiosMock.onDelete("/api/articles", {params: {title: "de-la-guerra"}}).reply(200, "Articles with id de-la-guerra was deleted");
+
+
+    //     const { getByTestId } = render(
+    //         <QueryClientProvider client={queryClient}>
+    //             <MemoryRouter>
+    //                 <ArticlesIndexPage />
+    //             </MemoryRouter>
+    //         </QueryClientProvider>
+    //     );
+
+    //     await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-title`)).toBeInTheDocument(); });
+
+    //    expect(getByTestId(`${testId}-cell-row-0-col-title`)).toHaveTextContent("de-la-guerra"); 
+
+
+    //     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    //     expect(deleteButton).toBeInTheDocument();
+       
+    //     fireEvent.click(deleteButton);
+
+    //     await waitFor(() => { expect(mockToast).toBeCalledWith("Articles with id de-la-guerra was deleted") });
+
+    // });
 
 });
 

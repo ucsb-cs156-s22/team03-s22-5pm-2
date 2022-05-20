@@ -1,6 +1,6 @@
 import {  render } from "@testing-library/react";
-import { articlesFixtures } from "fixtures/articlesFixtures";
-import ArticlesTable from "main/components/Articles/ArticlesTable";
+import { recommendationFixtures } from "fixtures/recommendationFixtures";
+import RecommendationsTable from "main/components/Recommendations/RecommendationsTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("ArticlesTable tests", () => {
+describe("RecommendationsTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -23,7 +23,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <RecommendationsTable recommendations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <RecommendationsTable recommendations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,7 +48,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <RecommendationsTable recommendations={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -62,15 +62,16 @@ describe("ArticlesTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={articlesFixtures.threeArticles} currentUser={currentUser} />
+          <RecommendationsTable recommendations={recommendationFixtures.threeRecommendations} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ['Id',  'Title', 'Url','Explanation','Email','Date Added'];
-    const expectedFields = ['id', 'title','url', 'explanation','email','dateAdded'];
-    const testId = "ArticlesTable";
+
+    const expectedHeaders = ['ID',  'Professor Email', 'Requester Email','Date Needed','Date Requested','Explanation','Done'];
+    const expectedFields = ['id', 'professorEmail','requesterEmail', 'dateNeeded','dateRequested','explanation','done'];
+    const testId = "RecommendationsTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = getByText(headerText);
@@ -82,20 +83,18 @@ describe("ArticlesTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("url3");
-    expect(getByTestId(`${testId}-cell-row-2-col-url`)).toHaveTextContent("url6");
-    expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
-    expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
+    expect(getByTestId(`${testId}-cell-row-0-col-professorEmail`)).toHaveTextContent("phtcon@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-1-col-professorEmail`)).toHaveTextContent("richert@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-0-col-requesterEmail`)).toHaveTextContent("cgaucho@ucsb.edu");
+    expect(getByTestId(`${testId}-cell-row-1-col-requesterEmail`)).toHaveTextContent("ldelplaya@ucsb.edu");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-
-    const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
-    expect(deleteButton).toBeInTheDocument();
-    expect(deleteButton).toHaveClass("btn-danger");
-
+    // const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
+    // expect(deleteButton).toBeInTheDocument();
+    // expect(deleteButton).toHaveClass("btn-danger");
 
   });
 
@@ -106,7 +105,7 @@ describe("ArticlesTable tests", () => {
   //   const { getByTestId } = render(
   //     <QueryClientProvider client={queryClient}>
   //       <MemoryRouter>
-  //         <UCSBDatesTable articles={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
+  //         <UCSBDatesTable recommendations={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
   //       </MemoryRouter>
   //     </QueryClientProvider>
 

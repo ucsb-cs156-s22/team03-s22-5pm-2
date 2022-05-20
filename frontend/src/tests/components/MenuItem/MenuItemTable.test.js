@@ -1,6 +1,6 @@
-import {  render } from "@testing-library/react";
-import { articlesFixtures } from "fixtures/articlesFixtures";
-import ArticlesTable from "main/components/Articles/ArticlesTable";
+import { render } from "@testing-library/react";
+import { menuItemFixtures } from "fixtures/menuItemFixtures";
+import MenuItemTable from "main/components/MenuItem/MenuItemTable";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 import { currentUserFixtures } from "fixtures/currentUserFixtures";
@@ -13,7 +13,7 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedNavigate
 }));
 
-describe("ArticlesTable tests", () => {
+describe("MenuItemTable tests", () => {
   const queryClient = new QueryClient();
 
 
@@ -23,7 +23,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <MenuItemTable menuItems={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -35,7 +35,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <MenuItemTable menuItems={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -48,7 +48,7 @@ describe("ArticlesTable tests", () => {
     render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={[]} currentUser={currentUser} />
+          <MenuItemTable menuItems={[]} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
@@ -62,15 +62,15 @@ describe("ArticlesTable tests", () => {
     const { getByText, getByTestId } = render(
       <QueryClientProvider client={queryClient}>
         <MemoryRouter>
-          <ArticlesTable articles={articlesFixtures.threeArticles} currentUser={currentUser} />
+          <MenuItemTable menuItems={menuItemFixtures.threeMenuItems} currentUser={currentUser} />
         </MemoryRouter>
       </QueryClientProvider>
 
     );
 
-    const expectedHeaders = ['Id',  'Title', 'Url','Explanation','Email','Date Added'];
-    const expectedFields = ['id', 'title','url', 'explanation','email','dateAdded'];
-    const testId = "ArticlesTable";
+    const expectedHeaders = ['Id', 'Dining Hall', 'Station', 'Name'];
+    const expectedFields = ['id', 'diningCommonsCode', 'station', 'name'];
+    const testId = "MenuItemTable";
 
     expectedHeaders.forEach((headerText) => {
       const header = getByText(headerText);
@@ -82,47 +82,19 @@ describe("ArticlesTable tests", () => {
       expect(header).toBeInTheDocument();
     });
 
-    expect(getByTestId(`${testId}-cell-row-1-col-url`)).toHaveTextContent("url3");
-    expect(getByTestId(`${testId}-cell-row-2-col-url`)).toHaveTextContent("url6");
-    expect(getByTestId(`${testId}-cell-row-1-col-title`)).toHaveTextContent("title3");
-    expect(getByTestId(`${testId}-cell-row-2-col-title`)).toHaveTextContent("title6");
+    expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
+    expect(getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
+    expect(getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("Cream of Broccoli Soup (v)");
+    expect(getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("Tofu Banh Mi Sandwich (v)");
 
     // const editButton = getByTestId(`${testId}-cell-row-0-col-Edit-button`);
     // expect(editButton).toBeInTheDocument();
     // expect(editButton).toHaveClass("btn-primary");
 
-
     const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();
     expect(deleteButton).toHaveClass("btn-danger");
 
-
   });
 
-  // test("Edit button navigates to the edit page for admin user", async () => {
-
-  //   const currentUser = currentUserFixtures.adminUser;
-
-  //   const { getByTestId } = render(
-  //     <QueryClientProvider client={queryClient}>
-  //       <MemoryRouter>
-  //         <UCSBDatesTable articles={ucsbDatesFixtures.threeDates} currentUser={currentUser} />
-  //       </MemoryRouter>
-  //     </QueryClientProvider>
-
-  //   );
-
-  //   await waitFor(() => { expect(getByTestId(`UCSBDatesTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
-
-  //   const editButton = getByTestId(`UCSBDatesTable-cell-row-0-col-Edit-button`);
-  //   expect(editButton).toBeInTheDocument();
-    
-  //   fireEvent.click(editButton);
-
-  //   await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/ucsbdates/edit/1'));
-
-  // });
-
-
 });
-

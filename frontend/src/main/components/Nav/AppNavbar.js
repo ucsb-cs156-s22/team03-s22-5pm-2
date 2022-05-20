@@ -74,6 +74,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+
               {
                 hasRole(currentUser, "ROLE_USER") && (
                   <NavDropdown title="Menu Item" id="appnavbar-menu-item-dropdown" data-testid="appnavbar-menu-item-dropdown" >
@@ -116,6 +117,7 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   </NavDropdown>
                 )
               }
+
             </Nav>
 
             <Nav className="ml-auto">

@@ -1,5 +1,5 @@
 const recommendationFixtures = {
-    oneReview: {
+    oneRecommendation: {
         "requesterEmail": "cgaucho@ucsb.edu",
         "professorEmail": "phtcon@ucsb.edu",
         "explanation": "BS/MS program",
@@ -7,7 +7,7 @@ const recommendationFixtures = {
         "dateNeeded": "2022-05-01T00:00:00",
         "done": true
     },
-    threeReviews: [
+    threeRecommendations: [
         {
             "requesterEmail": "cgaucho@ucsb.edu",
             "professorEmail": "phtcon@ucsb.edu",
