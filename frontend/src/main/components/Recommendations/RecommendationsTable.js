@@ -60,7 +60,8 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
         },
         {
             Header: 'Done',
-            accessor: 'done',
+            id: 'done', // needed for tests
+            accessor: (row, _rowIndex) => String(row.done) // hack needed for boolean values to show up
         },
     ];
 
