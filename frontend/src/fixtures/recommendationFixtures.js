@@ -1,5 +1,6 @@
 const recommendationFixtures = {
     oneRecommendation: {
+        "id": 0,
         "requesterEmail": "cgaucho@ucsb.edu",
         "professorEmail": "phtcon@ucsb.edu",
         "explanation": "BS/MS program",
@@ -9,6 +10,7 @@ const recommendationFixtures = {
     },
     threeRecommendations: [
         {
+            "id": 1,
             "requesterEmail": "cgaucho@ucsb.edu",
             "professorEmail": "phtcon@ucsb.edu",
             "explanation": "BS/MS program",
@@ -17,6 +19,7 @@ const recommendationFixtures = {
             "done": true
         },
         {
+            "id": 2,
             "requesterEmail": "ldelplaya@ucsb.edu",
             "professorEmail": "richert@ucsb.edu",
             "explanation": "PhD CS Stanford",
@@ -25,6 +28,7 @@ const recommendationFixtures = {
             "done": false
         },
         {
+            "id": 3,
             "requesterEmail": "cgau@ucsb.edu",
             "professorEmail": "pon@ucsb.edu",
             "explanation": "BS/MS program",
