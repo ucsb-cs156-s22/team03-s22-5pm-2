@@ -142,7 +142,7 @@ describe("RecommendationIndexPage tests", () => {
 
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/Recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
-        axiosMock.onDelete("/api/Recommendations", {params: {id:2}}).reply(200, "Recommendations with id 2 was deleted");
+        axiosMock.onDelete("/api/Recommendations", {params: {id:1}}).reply(200, "Recommendations with id 1 was deleted");
 
 
         const { getByTestId } = render(
@@ -155,7 +155,7 @@ describe("RecommendationIndexPage tests", () => {
 
         await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(2); 
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(0); 
 
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
@@ -163,7 +163,7 @@ describe("RecommendationIndexPage tests", () => {
        
         fireEvent.click(deleteButton);
 
-        await waitFor(() => { expect(mockToast).toBeCalledWith("Recommendations with id 2 was deleted") });
+        await waitFor(() => { expect(mockToast).toBeCalledWith("Recommendations with id 1 was deleted") });
 
     });
 });
