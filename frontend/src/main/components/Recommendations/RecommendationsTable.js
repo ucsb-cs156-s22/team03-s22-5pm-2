@@ -16,7 +16,7 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/ucsbdates/all"]
+        ["/api/Recommendations/all"]
     );
     // Stryker enable all 
 
