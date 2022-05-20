@@ -6,7 +6,7 @@ import { hasRole } from "main/utils/currentUser";
 
 export function cellToAxiosParamsDelete(cell) {
     return {
-        url: "/api/Recommendations",
+        url: "/api/Recommendation",
         method: "DELETE",
         params: {
             id: cell.row.values.id
@@ -26,9 +26,9 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/Recommendations/all"]
+        ["/api/Recommendation/all"]
     );
-    // Stryker enable all 
+    // Stryker enable all
 
     // // Stryker disable next-line all : TODO try to make a good test for this
     const deleteCallback = async (cell) => { deleteMutation.mutate(cell); }
@@ -48,7 +48,7 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
         },
         {
             Header: 'Date Needed',
-            accessor: 'dateNeeded', 
+            accessor: 'dateNeeded',
         },
         {
             Header: 'Date Requested',
@@ -71,7 +71,7 @@ export default function RecommendationsTable({ recommendations, currentUser }) {
     ];
 
     const columnsToDisplay = hasRole(currentUser, "ROLE_ADMIN") ? columnsIfAdmin : columns;
-    
+
     return <OurTable
         data={recommendations}
         columns={columnsToDisplay}

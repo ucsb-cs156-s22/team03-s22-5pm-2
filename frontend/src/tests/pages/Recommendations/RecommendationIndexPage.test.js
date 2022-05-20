@@ -45,7 +45,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders without crashing for regular user", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").reply(200, []);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -61,7 +61,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders without crashing for admin user", () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").reply(200, []);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, []);
 
         render(
             <QueryClientProvider client={queryClient}>
@@ -77,7 +77,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders three recommendations without crashing for regular user", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -96,7 +96,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders three recommendations without crashing for admin user", async () => {
         setupAdminUser();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
 
         const { getByTestId } = render(
             <QueryClientProvider client={queryClient}>
@@ -115,7 +115,7 @@ describe("RecommendationIndexPage tests", () => {
     test("renders empty table when backend unavailable, user only", async () => {
         setupUserOnly();
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").timeout();
+        axiosMock.onGet("/api/Recommendation/all").timeout();
 
         const { queryByTestId, getByText } = render(
             <QueryClientProvider client={queryClient}>
@@ -128,7 +128,7 @@ describe("RecommendationIndexPage tests", () => {
         await waitFor(() => { expect(axiosMock.history.get.length).toBeGreaterThanOrEqual(3); });
 
         const expectedHeaders = ['ID',  'Professor Email', 'Requester Email','Date Needed','Date Requested','Explanation','Done'];
-    
+
         expectedHeaders.forEach((headerText) => {
           const header = getByText(headerText);
           expect(header).toBeInTheDocument();
@@ -141,8 +141,8 @@ describe("RecommendationIndexPage tests", () => {
         setupAdminUser();
 
         const queryClient = new QueryClient();
-        axiosMock.onGet("/api/Recommendations/all").reply(200, recommendationFixtures.threeRecommendations);
-        axiosMock.onDelete("/api/Recommendations", {params: {id:1}}).reply(200, "Recommendations with id 1 was deleted");
+        axiosMock.onGet("/api/Recommendation/all").reply(200, recommendationFixtures.threeRecommendations);
+        axiosMock.onDelete("/api/Recommendation", {params: {id:1}}).reply(200, "Recommendations with id 1 was deleted");
 
 
         const { getByTestId } = render(
@@ -155,12 +155,12 @@ describe("RecommendationIndexPage tests", () => {
 
         await waitFor(() => { expect(getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
-       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(1); 
+       expect(getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent(1);
 
 
         const deleteButton = getByTestId(`${testId}-cell-row-0-col-Delete-button`);
         expect(deleteButton).toBeInTheDocument();
-       
+
         fireEvent.click(deleteButton);
 
         await waitFor(() => { expect(mockToast).toBeCalledWith("Recommendations with id 1 was deleted") });
